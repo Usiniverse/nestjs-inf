@@ -1,12 +1,14 @@
-import { Body, Controller, Get, Post, Param, UsePipes, ParseIntPipe, Delete, Patch } from '@nestjs/common';
+import { Body, Controller, Get, Post, Param, UsePipes, ParseIntPipe, Delete, Patch, UseGuards } from '@nestjs/common';
 import { BoardsService } from './boards.service';
 import { title } from 'process';
 import { Board } from './board.entity'
 import { CreateBoardDto } from 'src/dto/create-board.dto';
 import { BoardStatus } from './board-status.enum';
 import { BoardStatusValidationPipe } from 'src/pipes/board-status-valideation.pipe';
+import { AuthGuard } from '@nestjs/passport'
 
 @Controller('boards')
+@UseGuards(AuthGuard()) // 작동 시 unauthorized
 export class BoardsController {
     constructor(private boardsService: BoardsService) {}
 
