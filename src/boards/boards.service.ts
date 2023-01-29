@@ -1,24 +1,23 @@
 import { Injectable } from '@nestjs/common';
-import { Board, BoardStatus } from './boards.model';
+import { Board, BoardStatus } from './board-status.enum';
 import { v1 as uuid } from 'uuid';
 
 @Injectable()
 export class BoardsService {
-    private boards: Board[] = []; // 게시판 정보
 
-    getAllBoards(): Board[] {
-        return this.boards;
-    }
+    // getAllBoards(): Board[] {
+    //     return this.boards;
+    // }
 
-    createBoard(title: string, descrpition: string) {
-        const board: Board = {
-            id: uuid(),
-            title,
-            descrpition,
-            status: BoardStatus.PUBLIC
-        }   
+    // createBoard(title: string, descrpition: string) {
+    //     const board: Board = {
+    //         id: uuid(),
+    //         title,
+    //         descrpition,
+    //         status: BoardStatus.PUBLIC
+    //     }   
 
-        this.boards.push(board)
-        return board;
-    }
+    //     this.boards.push(board)
+    //     return board;
+    // }
 }
