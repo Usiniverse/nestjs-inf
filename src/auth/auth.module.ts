@@ -11,15 +11,15 @@ import { UserRepository } from './user.repository';
   imports: [
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
-      secret: 'yushin', 
+      secret: 'yushin',
       signOptions: {
-        expiresIn: 3600 // 3600초
-      }
+        expiresIn: 3600, // 3600초
+      },
     }),
-    TypeOrmModule.forFeature([UserRepository])
+    TypeOrmModule.forFeature([UserRepository]),
   ],
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy],
-  exports: [JwtStrategy, PassportModule] // 다른 모듈에서 사용해주기 위해 넣어줌
+  exports: [JwtStrategy, PassportModule], // 다른 모듈에서 사용해주기 위해 넣어줌
 })
 export class AuthModule {}
